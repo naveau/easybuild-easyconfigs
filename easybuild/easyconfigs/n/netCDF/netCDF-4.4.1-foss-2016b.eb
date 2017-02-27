@@ -15,6 +15,7 @@ source_urls = [
 ]
 
 dependencies = [
+    ('M4', '1.4.17'),
     ('HDF5', '1.8.17'),
     ('cURL', '7.49.1'),
     ('Szip', '2.1'),
