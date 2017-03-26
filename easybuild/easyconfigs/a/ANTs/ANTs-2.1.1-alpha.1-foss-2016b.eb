@@ -1,0 +1,41 @@
+easyblock = 'CMakeMake'
+
+name = 'ANTs'
+version = '2.1.1-alpha.1'
+
+homepage = 'https://github.com/stnava/ANTs/'
+description = """ANTs extracts information from complex datasets that include imaging. ANTs is useful for managing,
+ interpreting and visualizing multidimensional data."""
+
+toolchain = {'name': 'foss', 'version': '2016b'}
+toolchainopts = {'pic': True}
+
+source_urls = ['https://github.com/naveau/ANTs/archive/']
+sources = ['v%(version)s.tar.gz']
+
+patches = [
+    'superbuild-git-protocol.patch'
+]
+
+builddependencies = [('CMake', '3.6.1')]
+
+skipsteps = ['install']
+buildopts = ' && mkdir -p %(installdir)s && cp -r * %(installdir)s/'
+postinstallcmds = [
+    'cp -r %(builddir)s/%(name)s-%(version)s/Scripts/* %(installdir)s/bin/'
+]
+
+parallel = 1
+
+separate_build_dir = True
+
+sanity_check_paths = {
+    'files': ['bin/ANTS'],
+    'dirs': ['lib'],
+}
+
+moduleclass = 'data'
+modextravars = {
+    'ANTSPATH': '%(installdir)s/bin',
+}
+

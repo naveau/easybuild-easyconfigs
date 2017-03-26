@@ -1,0 +1,12 @@
+--- ANTs.orig/SuperBuild.cmake  2017-03-10 10:06:42.566225000 +0100
++++ ANTs/SuperBuild.cmake       2017-03-10 16:54:05.737775559 +0100
+@@ -18,7 +18,8 @@ include(${CMAKE_CURRENT_SOURCE_DIR}/Comm
+ # Git protocol option
+ #-----------------------------------------------------------------------------
+ option(${CMAKE_PROJECT_NAME}_USE_GIT_PROTOCOL "If behind a firewall turn this off to use http instead." ON)
+-set(git_protocol "git")
++#set(git_protocol "git")
++set(git_protocol "https")
+ if(NOT ${CMAKE_PROJECT_NAME}_USE_GIT_PROTOCOL)
+   set(git_protocol "https")
+ endif()
